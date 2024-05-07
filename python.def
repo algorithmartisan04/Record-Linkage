@@ -1,0 +1,33 @@
+Bootstrap : docker
+From: ubuntu:22.04
+
+post
+    export DEBIAN_FRONTEND=noninteractive
+
+    apt-get install -y slurm-wlm
+
+    apt-get -y update
+    apt-get install -y python3-pip
+    apt-get install -y openjdk-17-jdk
+    apt-get install -y wget
+    apt-get install -y openssh-client
+    apt-get install -y openssh-server
+    apt-get install -y vim
+
+    # apt-get install -y tmux
+    # apt-get install -y git
+
+    mkdir spark&& cd spark
+    wget https://dlcdn.apache.org/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.tgz
+    tar -xvf spark-3.4.0-bin-hadoop3.tgz
+    
+    # There are a lot of hard coded paths to spark-3.4.0-bin-hadoop3
+    rm spark-3.4.0-bin-hadoop3.tgz
+
+    pip3 install --upgrade pip
+    pip3 install packaging
+    pip3 install paramiko
+    pip3 install pyspark
+    pip3 install splink['all']
+    pip3 install splink['spark']
+    pip3 install pandas
